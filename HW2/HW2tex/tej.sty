@@ -1,0 +1,104 @@
+% Quick hacked TeX package to have useful commands
+
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{tej}[2016/09/17 v0.01 LaTeX package for my own commands]
+
+\RequirePackage{color}
+\RequirePackage[notext,nomath]{stix}
+\RequirePackage{amsthm}
+\RequirePackage{braket}
+\RequirePackage{slashed}
+\RequirePackage{todonotes}
+
+\providecommand{\tej}[1]{\todo[color=violet]{\color{white} \textbf{Tej: } #1}}
+\providecommand{\tejin}[1]{\todo[inline,color=violet]{\color{white} \textbf{Tej: } #1}}
+\providecommand{\TODOFIG}[1]{\textcolor{red}{\textbf{[#1]}}} % TODO in fig
+\providecommand{\TODO}[1]{\tej{#1}} % TODO in tej's color
+\providecommand{\TD}[0]{\TODO{TODO}} % TODO text
+\providecommand{\comment}[1]{{\color{red}[#1]}} % anonymous inline comment
+
+\providecommand{\dbar}{d\hspace*{-0.08em}\bar{}\hspace*{0.1em}} % dbar, for path-dep derivative
+\providecommand{\p}[0]{\partial} % del
+\providecommand{\pbp}[2]{\dfrac{\p #1}{\p #2}} % partial derivative
+\providecommand{\pbptwo}[2]{\dfrac{\p^2 #1}{\p {#2}^2}} % double partial derivative
+\providecommand{\dbd}[2]{\dfrac{d #1}{d #2}} % total derivative
+\providecommand{\dbdd}[3]{\dfrac{d^2 #1}{d #2 d #3}} % total second derivative
+\providecommand{\fbf}[2]{\dfrac{\delta #1}{\delta #2}} % functional derivative
+\providecommand{\opb}[0]{\left.} % phantom open bar
+\providecommand{\clb}[0]{\right|} % close bar
+\providecommand{\eval}[1]{\opb #1 \clb} % evaluated at
+\providecommand{\psib}[0]{\bar{\psi}} % psi bar
+\providecommand{\inv}[1]{#1^{-1}} % inverse power
+\providecommand{\veca}[0]{\vec{a}} % vector a
+\providecommand{\vecb}[0]{\vec{b}} % vector b
+\providecommand{\vecx}[0]{\vec{x}} % vector x
+\providecommand{\veck}[0]{\vec{k}} % vector k
+\providecommand{\vecp}[0]{\vec{p}} % vector p
+\providecommand{\vecq}[0]{\vec{q}} % vector q
+\providecommand{\op}[0]{\mathcal{O}} % operator
+\providecommand{\ob}[0]{\mathcal{O}} % observable
+\providecommand{\lag}[0]{\mathcal{L}} % Lagrangian
+\providecommand{\ham}[0]{\mathcal{H}} % Hamiltonian
+\providecommand{\pot}[0]{\mathcal{V}} % potential
+\providecommand{\paren}[1]{\left( #1 \right)} % wrap in nice parentheses
+\providecommand{\curl}[1]{\left\{ #1 \right\}} % wrap in nice curly braces
+\providecommand{\curly}[1]{\curl{#1}} % wrap in nice curly braces
+\providecommand{\sq}[1]{{\left[ #1 \right]}} % wrap in nice square brackets
+\providecommand{\expp}[1]{\exp{\paren{ #1 }}} % wrap exp in parens
+\providecommand{\logp}[1]{\log{\paren{ #1 }}} % wrap log in parens
+\providecommand{\eps}[0]{\epsilon} % epsilon symbol, levi cevita tensor
+\providecommand{\order}[1]{\mathcal{O}\paren{ #1 }} % order-of notation
+\providecommand{\like}[0]{\sim} % rename the ``goes-like'' equality
+\providecommand{\demand}[0]{\stackrel{!}{=}} % bang-equals demand symbol
+\providecommand{\qe}[0]{\stackrel{?}{=}} % question-equals dubious symbol
+\providecommand{\dubious}[0]{\qe} % dubious alias
+\providecommand{\ubar}[1]{\underbar{$#1$}} % avoid weird text-mode switch
+\providecommand{\norm}[1]{\left\lVert{#1}\right\rVert} % double-bar norm
+\providecommand{\abs}[1]{\left|{#1}\right|} % single-bar abs
+\providecommand{\spann}[1]{\text{span}{#1}} % math-mode ``span'' operation
+\providecommand{\ints}[0]{\strokedint} % integral with a slash to hide measure
+\providecommand{\grad}[0]{\nabla} % gradient alias for nabla
+\providecommand{\detp}[1]{\det{\paren{#1}}} % det with parens
+\providecommand{\tr}[1]{\text{tr}\paren{#1}} % trace of argument
+\providecommand{\pmu}[0]{\partial_\mu} % partial mu
+\providecommand{\psmu}[0]{\partial^\mu} % partial sup mu
+\providecommand{\pnu}[0]{\partial_\nu} % partial nu
+\providecommand{\psnu}[0]{\partial^\nu} % partial sup nu
+\providecommand{\curr}[0]{\mathcal{J}} % current symbol
+% Stat mech things
+\providecommand{\poisson}[1]{\left\{ #1 \right\}} % Poisson brackets
+\providecommand{\bbar}{\mathchar'26\mkern-9mu b} % normalized connected coefficients
+\providecommand{\grandpa}{\mathcal{Q}} % Grand partition
+\providecommand{\mt}{\tilde{m}} % m twiddle - renorm low modes
+\providecommand{\phit}{\tilde{\phi}} % phi twiddl - renorm low modes
+\providecommand{\avg}[1]{\braket{#1}} % ensemble average
+\providecommand{\D}[1]{\mathcal{D}{#1}} % functional integral measure
+
+% QFT things
+\providecommand{\normal}[1]{\left\{ #1 \right\}_{:}} % better normal ordering syntax
+\providecommand{\tord}[0]{\mathcal{T}} % time ordering operator
+\providecommand{\msbar}[0]{$\overline{\text{MS}}$} % MS-bar symbol
+\providecommand{\Dslash}[0]{\slashed{D}} % slashed covariant derivative
+\providecommand{\nuclop}[0]{\mathcal{N}} % nuclear interpolating operator
+\providecommand{\amp}[0]{\mathcal{M}} % QFT amplitude
+\providecommand{\hc}[0]{\text{h.c.}} % "Hermitian conjugate"
+
+% Pull in some symbols from STIX without the whole font
+\DeclareFontEncoding{LS2}          {}{\noaccents@}
+\DeclareFontSubstitution{LS2}      {stix}{m}{n}
+\DeclareSymbolFont{arrows3}        {LS2}{stixtt}   {m} {n}
+\SetSymbolFont{arrows3}      {bold}{LS2}{stixtt}   {b} {n}
+\DeclareMathSymbol{\ultriangle}    {\mathord}{arrows3}{"97}
+\DeclareMathSymbol{\urtriangle}    {\mathord}{arrows3}{"98}
+\DeclareMathSymbol{\lltriangle}    {\mathord}{arrows3}{"99}
+\DeclareMathSymbol{\lrtriangle}    {\mathord}{arrows3}{"9E}
+\DeclareMathSymbol{\ulblacktriangle}    {\mathord}{arrows3}{"F9}
+\DeclareMathSymbol{\urblacktriangle}    {\mathord}{arrows3}{"FA}
+\DeclareMathSymbol{\llblacktriangle}    {\mathord}{arrows3}{"FB}
+\DeclareMathSymbol{\lrblacktriangle}    {\mathord}{arrows3}{"FC}
+
+% amsthm
+%% \newtheorem{theorem}[section]{Theorem}
+%% \newtheorem{lemma}[section]{Lemma}
+
+\endinput
